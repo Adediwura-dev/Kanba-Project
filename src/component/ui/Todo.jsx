@@ -8,8 +8,12 @@ export default function Todo() {
 					<CircleDashed className='w-4 h-4' />
 					<h3 className='uppercase font-bold m-0'>To-do</h3>
 				</div>
-				<Card backgroundColor='bg-[#bae3a8]' />
-				<Card backgroundColor='bg-[#bae3a8]' />
+				<Card
+					title='this is my card'
+					description='this is my card description'
+					backgroundColor='bg-[#bae3a8]'
+				/>
+				<Card title='this is my card' backgroundColor='bg-[#bae3a8]' />
 			</div>
 		</div>
 	);
