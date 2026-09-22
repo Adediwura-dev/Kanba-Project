@@ -12,11 +12,11 @@ export default function Card({
 	dateCreated = currentDate.toLocaleDateString();
 	return (
 		<div
-			className='max-w-[250px] min-h-[100px] my-6 mx-3.5 py-2 px-6 flex flex-col items-left justify-center
-					rounded-xl hover:bg-gray-200 hover:shadow-md transition-shadow duration-200'
+			className={`max-w-[250px] min-h-[100px] my-4 mx-3.5 py-2 px-6 flex flex-col items-left justify-center
+				rounded-xl ${backgroundColor} hover:bg-gray-200 hover:shadow-md transition-shadow duration-200`}
 			style={{
 				color: color,
-				backgroundColor: backgroundColor,
+				// backgroundColor: backgroundColor,
 			}}
 		>
 			{/* <h3 className='font-bold text-lg first-letter:uppercase'>{title}</h3>
