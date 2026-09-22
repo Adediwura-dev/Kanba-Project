@@ -2,7 +2,7 @@ import { CircleDashed } from "lucide-react";
 import Card from "../reusable/Card";
 export default function Todo() {
 	return (
-		<div className='flex flex-col gap-4 justify-center  py-3 px-4 rounded-3xl bg-[#9DC183]'>
+		<div className='flex flex-col gap-4 justify-start  py-3 px-4 rounded-3xl bg-[#9DC183]'>
 			<div>
 				<div className='flex gap-2 w-fit bg-[#77b14e] py-1 px-2 text-sm rounded-2xl items-center'>
 					<CircleDashed className='w-4 h-4' />
