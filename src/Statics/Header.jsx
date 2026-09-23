@@ -1,5 +1,5 @@
 
-
+import { Link } from "react-router-dom"
 import logo from "../assets/logo.png"
 import { Trash, Menu } from "lucide-react"
 
@@ -12,9 +12,9 @@ const Header = () => {
                     <img src={logo} className="max-w-[150px] min-h-[60px]" />
                 </div>
                 <div className="flex gap-6 items-center cursor-pointer max-md:hidden ">
-                    <nav className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">Home</nav>
-                    <nav className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">About Us</nav>
-                    <nav className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded"> Kanba Board</nav>
+                   <Link to="/" className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">Home</Link>
+                    <Link to="/about" className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">About Us</Link>
+                    <Link to="/kanban" className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">Kanban Board</Link>
                 </div>
             </div>
             <div className="flex justify-between gap-6 cursor-pointer">
