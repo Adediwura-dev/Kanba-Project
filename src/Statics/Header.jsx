@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom"
 
 import { useState } from "react"
 import logo from "../assets/logo.png"
@@ -29,10 +30,10 @@ const Header = () => {
                 <div className="">
                     <img src={logo} className="max-w-[150px] min-h-[60px] max-lg: max-w-[120px] min-h-[40px]" />
                 </div>
-                <div className="flex gap-6 items-center cursor-pointer max-md:hidden max-lg:block flex-nowrap max-lg:whitespace-nowrap max-lg: overflow-x-auto max-lg:pb-2">
-                    <nav className="bg-white text-black shrink-0 hover:bg-[#800000] hover:text-white font-bold py-2 px-4 rounded">Home</nav>
-                    <nav className="bg-white text-black shrink-0 hover:bg-[#800000] hover:text-white font-bold py-2 px-4 rounded">About Us</nav>
-                    <nav className="bg-white text-black shrink-0 hover:bg-[#800000] hover:text-white font-bold py-2 px-4 rounded"> Kanba Board</nav>
+                <div className="flex gap-6 items-center cursor-pointer max-md:hidden ">
+                   <Link to="/" className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">Home</Link>
+                    <Link to="/about" className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">About Us</Link>
+                    <Link to="/kanban" className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">Kanban Board</Link>
                 </div>
             </div>
             <div className="flex justify-between gap-6 cursor-pointer ">
