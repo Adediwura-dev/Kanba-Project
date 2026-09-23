@@ -1,5 +1,7 @@
 import { ListSortDescending, Trash } from "lucide-react";
 import { useState } from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 export default function Card({
   title,
@@ -9,10 +11,18 @@ export default function Card({
   backgroundColor,
   descriptionIcon,
   id,
-  onDragStart, 
-  onDragEnd,
 }) {
   const [descriptionText, setDescriptionText] = useState(false);
+
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      id: id,
+    });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
 
   const currentDate = new Date();
   dateCreated = currentDate.toLocaleDateString();
@@ -22,19 +32,23 @@ export default function Card({
   }
   return (
     <div
+      ref={setNodeRef}
+      style={{
+        ...style,
+        color: color,
+      }}
+      {...attributes}
+      {...listeners}
       className={`max-w-[250px] min-h-[80px] my-4 mx-3.5 py-2 px-6 flex flex-col items-left justify-center
 				rounded-xl ${backgroundColor} hover:bg-gray-200 hover:shadow-md transition-shadow duration-200`}
-      style={{
-        color: color,
-        // backgroundColor: backgroundColor,
-      }}
-	  draggable="true"
-	  onDragStart={(e) => onDragStart(e, id)}
-	  onDragEnd={onDragEnd}
     >
       <h3 className="font-bold text-lg first-letter:uppercase">{title}</h3>
       {description && (
-        <button onClick={displayDescription} className="cursor-pointer">
+        <button
+          onClick={displayDescription}
+          onPointerDown={(e) => e.stopPropagation()}
+          className="cursor-pointer"
+        >
           <ListSortDescending className="w-4" />
         </button>
       )}
