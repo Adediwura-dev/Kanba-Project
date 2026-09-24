@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../assets/logo.png";
 import { Trash, Menu } from "lucide-react";
+import Bin from "../component/ui/Bin";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [openBin, setOpenBin] = useState(false);
   return (
     <div className="flex justify-between  items-center py-4 px-4 font-bold text-base md:text-xl top-0 left-0 z-50 h-[70px] gap-2 max-lg:px-2 max-lg:text-sm">
       <div className="flex justify-between gap-6 items-center cursor-pointer ">
@@ -29,7 +31,9 @@ const Header = () => {
             <nav>Home</nav>
             <nav>About Us</nav>
             <nav>Tasks Board</nav>
-            <Trash />
+            <button onClick={() => setOpenBin(true)} className="cursor-pointer">
+              <Trash />
+            </button>{" "}
             <button>Sign Up</button>
             <button>Log in</button>
           </div>
@@ -62,7 +66,10 @@ const Header = () => {
         </div>
       </div>
       <div className="flex justify-between gap-6 cursor-pointer ">
-        <Trash className=" hover:bg-[#800000]  py-2 h-10 " />
+        <button onClick={() => setOpenBin(true)} className="cursor-pointer">
+          <Trash className="hover:bg-[#800000] py-2 h-10" />
+        </button>
+        {/* <Trash className=" hover:bg-[#800000]  py-2 h-10 " /> */}
         <div className="flex gap-5 cursor-pointer max-md:hidden">
           <button className="bg-white text-black hover:bg-[#800000] hover:text-white font-bold py-2 px-4 rounded">
             Sign Up
@@ -72,6 +79,7 @@ const Header = () => {
           </button>
         </div>
       </div>
+      {openBin && <Bin closeBin={() => setOpenBin(false)} />}
     </div>
   );
 };
