@@ -2,10 +2,11 @@ import { CircleDashed, CircleX } from "lucide-react";
 import Card from "../reusable/Card";
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
-export default function Todo() {
+export default function Todo({ cards }) {
 	const { setNodeRef } = useDroppable({ id: "todo" });
 
-	const todoCards = ["todo-1", "todo-2"];
+	// const todoCards = ["todo-1", "todo-2"];
+	const todoCards = cards.filter((card) => card.category === "todo");
 
 	return (
 		<div
@@ -18,8 +19,18 @@ export default function Todo() {
 					<h3 className='uppercase font-bold m-0'>To-do</h3>
 				</div>
 
-				<SortableContext items={todoCards}>
-					<Card
+				<SortableContext items={todoCards.map((card) => card.id)}>
+					{todoCards.map((card) => (
+						<Card
+							key={card.id}
+							id={card.id}
+							title={card.title}
+							description={card.description}
+							dateCreated={card.dateCreated}
+							backgroundColor='bg-[#bae3a8]'
+						/>
+					))}
+					{/* <Card
 						id='todo-1'
 						title='this is my card'
 						description='this is my card description'
@@ -30,7 +41,7 @@ export default function Todo() {
 						title='this is my card'
 						description='this is my card description'
 						backgroundColor='bg-[#bae3a8]'
-					/>
+					/> */}
 				</SortableContext>
 			</div>
 		</div>
