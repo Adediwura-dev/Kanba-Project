@@ -2,7 +2,7 @@ import { CircleDashedCheck } from "lucide-react";
 import Card from "../reusable/Card";
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
-export default function All({ cards }) {
+export default function All({ cards, deleteCard}) {
 	const { setNodeRef } = useDroppable({ id: "all" });
 	const allCards = cards;
 
@@ -25,6 +25,7 @@ export default function All({ cards }) {
 							description={card.description}
 							dateCreated={card.dateCreated}
 							backgroundColor='bg-[#CDEBFC]'
+							deleteCard={deleteCard}
 						/>
 					))}
 				</SortableContext>
