@@ -1,4 +1,4 @@
-import { ListSortDescending, Trash } from "lucide-react";
+import { ListSortDescending, Trash, CircleX } from "lucide-react";
 import { useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -12,8 +12,6 @@ export default function Card({
 	displayDescription,
 	id,
 }) {
-	const [descriptionText, setDescriptionText] = useState(false);
-
 	const { attributes, listeners, setNodeRef, transform, transition } =
 		useSortable({
 			id: id,
@@ -23,77 +21,62 @@ export default function Card({
 		transform: CSS.Transform.toString(transform),
 		transition,
 	};
+	const [showDescription, setShowDescription] = useState(false);
 
 	const currentDate = new Date();
 	dateCreated = currentDate.toLocaleDateString();
 
-	function displayDescription() {
-		setDescriptionText(!descriptionText);
-	}
-	return (
-		<div
-			ref={setNodeRef}
-			style={{
-				...style,
-				color: color,
-			}}
-			{...attributes}
-			{...listeners}
-			className={`max-w-[250px] min-h-[80px] my-4 mx-3.5 py-2 px-6 flex flex-col items-left justify-center
-				rounded-xl ${backgroundColor} hover:bg-gray-200 hover:shadow-md transition-shadow duration-200`}
-		>
-			<h3 className='font-bold text-lg first-letter:uppercase'>{title}</h3>
-			{description && (
-				<button
-					onClick={displayDescription}
-					onPointerDown={(e) => e.stopPropagation()}
-					className='cursor-pointer'
-				>
-					<ListSortDescending className='w-4' />
-				</button>
-			)}
-			{descriptionText && (
-				<p className=' text-base first-letter:uppercase'>{description}</p>
-			)}
-			{/* <h2 className='font-bold text-lg first-letter:uppercase'>
-	// const [descriptionText, setDescriptionText] = useState(false);
-	const currentDate = new Date();
-	dateCreated = currentDate.toLocaleDateString();
-	// function displayDescription() {
-	// 	setDescriptionText(!descriptionText);
-	// }
 	function handleDescriptionClick() {
-		displayDescription(description);
+		setShowDescription(true);
+	}
+	function closeDescription(description) {
+		setShowDescription(false);
 	}
 	return (
-		<div
-			className={`max-w-[250px] min-h-[80px] my-4 mx-3.5 py-2 px-6 flex flex-col items-left justify-center
-				rounded-xl ${backgroundColor} hover:bg-[#f0dede] hover:shadow-md transition-shadow duration-200`}
-			style={{
-				color: color,
-				// backgroundColor: backgroundColor,
-			}}
-		>
-			<h3 className='font-bold text-lg first-letter:uppercase'>{title}</h3>
-			{description && (
-				<button
-					onClick={handleDescriptionClick}
-					className='cursor-pointer w-fit'
-				>
-					<ListSortDescending className='w-6 hover:bg-[#f0d2d2] p-1 rounded-md' />
-				</button>
-			)}
-			{/* {descriptionText && (
-				<p className=' text-base first-letter:uppercase'>{description}</p>
-			)} */}
-			{/* <h2 className='font-bold text-lg first-letter:uppercase'>
-				this is my card
-			</h2>
-			<p className=' text-base'>this is my description</p> */}
-			<p>{dateCreated}</p>
-			<div className='text-red-700 ml-auto'>
-				<Trash className='w-4 cursor-pointer' />
+		<>
+			<div
+				ref={setNodeRef}
+				style={{
+					...style,
+					color: color,
+				}}
+				{...attributes}
+				{...listeners}
+				className={`max-w-[250px] min-h-[80px] my-4 mx-3.5 py-2 px-6 flex flex-col items-left justify-center
+				rounded-xl ${backgroundColor} hover:bg-gray-200 hover:shadow-md transition-shadow duration-200`}
+			>
+				<h3 className='font-bold text-lg first-letter:uppercase'>{title}</h3>
+				{description && (
+					<button
+						onClick={handleDescriptionClick}
+						onPointerDown={(e) => e.stopPropagation()}
+						className='cursor-pointer'
+					>
+						<ListSortDescending className='w-4' />
+					</button>
+				)}
+				<p>{dateCreated}</p>
+				<div className='text-red-700 ml-auto'>
+					<Trash className='w-4 cursor-pointer' />
+				</div>
 			</div>
-		</div>
+			{showDescription && (
+				<div className='fixed inset-0 z-50 flex items-center justify-center bg-black/30'>
+					<div className='w-[400px] rounded-xl bg-[#f0dede] p-4 shadow-xl'>
+						<div className='flex items-center justify-between'>
+							<button
+								onClick={closeDescription}
+								className='cursor-pointer text-xl ml-auto'
+							>
+								<CircleX className='w-5 h-5 text-red-700' />
+							</button>
+						</div>
+						<p className='mt-2 text-base first-letter:uppercase'>
+							{description}
+						</p>
+					</div>
+				</div>
+			)}
+		</>
 	);
 }
