@@ -8,7 +8,7 @@ export default function InProgress({ cards, deleteCard }) {
 
   // const inprogressCards = ["inprogress-1", "inprogress-2"];
   const inprogressCards = cards.filter(
-    (card) => card.category === "inprogress" && !card.deleted
+    (card) => card.category === "inprogress" && !card.deleted,
   );
   return (
     <div
@@ -20,20 +20,6 @@ export default function InProgress({ cards, deleteCard }) {
           <LoaderCircle className="w-4 h-4" />
           <h3 className="uppercase font-bold m-0">In-Progress</h3>
         </div>
-	// const inprogressCards = ["inprogress-1", "inprogress-2"];
-	const inprogressCards = cards.filter(
-		(card) => card.category === "inprogress"
-	);
-	return (
-		<div
-			ref={setNodeRef}
-			className='flex flex-col max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar gap-4 justify-start py-3 px-4 rounded-3xl bg-[#FFEDA8]'
-		>
-			<div>
-				<div className='flex gap-1.5 w-fit  py-1 px-2 text-sm rounded-2xl items-center bg-[#FCD15B]'>
-					<LoaderCircle className='w-4 h-4' />
-					<h3 className='uppercase font-bold m-0'>In-Progress</h3>
-				</div>
 
         <SortableContext items={inprogressCards.map((card) => card.id)}>
           {inprogressCards.map((card) => (
