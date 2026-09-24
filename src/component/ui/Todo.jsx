@@ -10,6 +10,16 @@ export default function Todo({ cards, deleteCard }) {
   const todoCards = cards.filter(
     (card) => card.category === "todo" && !card.deleted,
   );
+	return (
+		<div
+			ref={setNodeRef}
+			className='flex flex-col max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar gap-4 justify-start  py-3 px-4 rounded-3xl bg-[#9DC183]'
+		>
+			<div>
+				<div className='flex gap-1.5 w-fit bg-[#77b14e] py-1 px-2 text-sm rounded-2xl items-center'>
+					<CircleDashed className='w-4 h-4' />
+					<h3 className='uppercase font-bold m-0'>To-do</h3>
+				</div>
 
   return (
     <div
