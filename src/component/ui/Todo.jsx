@@ -6,7 +6,7 @@ import { SortableContext } from "@dnd-kit/sortable";
 export default function Todo() {
   const { setNodeRef } = useDroppable({ id: "todo" });
 
-  const todoCards = ["todo-1", "todo2"];
+  const todoCards = ["todo-1", "todo-2"];
 
   return (
     <div
