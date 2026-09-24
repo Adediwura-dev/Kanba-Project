@@ -31,9 +31,9 @@ const Header = () => {
                     <img src={logo} className="max-w-[150px] min-h-[60px] max-lg: max-w-[120px] min-h-[40px]" />
                 </div>
                 <div className="flex gap-6 items-center cursor-pointer max-md:hidden ">
-                   <Link to="/" className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">Home</Link>
-                    <Link to="/about" className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">About Us</Link>
-                    <Link to="/kanban" className="bg-white-500 hover:bg-blue-300 text-black font-bold py-2 px-4 rounded">Kanban Board</Link>
+                   <Link to="/" className="bg-white-500  hover:bg-[#800000] text-black font-bold py-2 px-4 rounded">Home</Link>
+                    <Link to="/about" className="bg-white-500 hover:bg-gray-600 text-black font-bold py-2 px-4 rounded">About Us</Link>
+                    <Link to="/kanban" className="bg-white-500 hover:bg-[#800000] text-black font-bold py-2 px-4 rounded">Kanban Board</Link>
                 </div>
             </div>
             <div className="flex justify-between gap-6 cursor-pointer ">
