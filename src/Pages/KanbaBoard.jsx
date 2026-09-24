@@ -36,7 +36,6 @@ export default function KanbaBoard() {
     }
   }
 
-
   function handleDragEnd(event) {
     const { active, over } = event;
 
@@ -50,46 +49,11 @@ export default function KanbaBoard() {
   return (
     <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
       <div className="parent-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-4 mx-6 my-8 text-gray-700">
-        <All cards={cards} deleteCard={handleDeleteCards}/>
-        <Todo cards={cards} deleteCard={handleDeleteCards}/>
-        <InProgress cards={cards} deleteCard={handleDeleteCards}/>
-        <Completed cards={cards} deleteCard={handleDeleteCards}/>
+        <All cards={cards} deleteCard={handleDeleteCards} />
+        <Todo cards={cards} deleteCard={handleDeleteCards} />
+        <InProgress cards={cards} deleteCard={handleDeleteCards} />
+        <Completed cards={cards} deleteCard={handleDeleteCards} />
       </div>
     </DndContext>
   );
-	const [cards, setCards] = useState([]);
-	useEffect(() => {
-		const unsubscribe = onSnapshot(collection(db, "cards"), (snapshot) => {
-			const cardsData = snapshot.docs.map((doc) => ({
-				id: doc.id,
-				...doc.data(),
-			}));
-
-			setCards(cardsData);
-		});
-
-		return () => unsubscribe();
-	}, []);
-	function handleDragEnd(event) {
-		const { active, over } = event;
-
-		if (!over) {
-			return;
-		}
-		console.log("Dragged card:", active.id);
-		console.log("Dropped over:", over.id);
-	}
-
-	return (
-		<DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
-			<div className='-[calc(100vh-200px)]'>
-				<div className='parent-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-4 mx-6 my-8 text-gray-700'>
-					<All cards={cards} />
-					<Todo cards={cards} />
-					<InProgress cards={cards} />
-					<Completed cards={cards} />
-				</div>
-			</div>
-		</DndContext>
-	);
 }
