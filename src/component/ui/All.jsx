@@ -2,9 +2,9 @@ import { CircleDashedCheck } from "lucide-react";
 import Card from "../reusable/Card";
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
-export default function All() {
-	const { setNodeRef } = useDroppable({ id: "todo" });
-	const allCards = ["all-1", "all-2"];
+export default function All({ cards }) {
+	const { setNodeRef } = useDroppable({ id: "all" });
+	const allCards = cards;
 
 	return (
 		<div
@@ -17,13 +17,16 @@ export default function All() {
 					<h3 className='uppercase font-bold m-0'>All</h3>
 				</div>
 				<SortableContext items={allCards}>
-					<Card id='all-1' backgroundColor='bg-[#CDEBFC]' />
-					<Card
-						id='all-2'
-						title='this is my card'
-						description='this is my card description'
-						backgroundColor='bg-[#CDEBFC]'
-					/>
+					{allCards.map((card) => (
+						<Card
+							key={card.id}
+							id={card.id}
+							title={card.title}
+							description={card.description}
+							dateCreated={card.dateCreated}
+							backgroundColor='bg-[#CDEBFC]'
+						/>
+					))}
 				</SortableContext>
 			</div>
 		</div>

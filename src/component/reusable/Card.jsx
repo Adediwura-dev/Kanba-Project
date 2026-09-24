@@ -11,6 +11,7 @@ export default function Card({
 	backgroundColor,
 	displayDescription,
 	id,
+	deleteCard,
 }) {
 	const { attributes, listeners, setNodeRef, transform, transition } =
 		useSortable({
@@ -32,6 +33,10 @@ export default function Card({
 	function closeDescription(description) {
 		setShowDescription(false);
 	}
+	function handleDeleteCard(card) {
+		deleteCard(id);
+	}
+
 	return (
 		<>
 			<div
@@ -42,7 +47,7 @@ export default function Card({
 				}}
 				{...attributes}
 				{...listeners}
-				className={`max-w-[250px] min-h-[80px] my-4 mx-3.5 py-2 px-6 flex flex-col items-left justify-center
+				className={`w-full  min-h-[80px] my-4  py-2 px-6 flex flex-col  justify-center
 				rounded-xl ${backgroundColor} hover:bg-gray-200 hover:shadow-md transition-shadow duration-200`}
 			>
 				<h3 className='font-bold text-lg first-letter:uppercase'>{title}</h3>
@@ -56,13 +61,17 @@ export default function Card({
 					</button>
 				)}
 				<p>{dateCreated}</p>
-				<div className='text-red-700 ml-auto'>
+				<button
+					className='text-red-700 ml-auto'
+					onPointerDown={(e) => e.stopPropagation()}
+					onClick={handleDeleteCard}
+				>
 					<Trash className='w-4 cursor-pointer' />
-				</div>
+				</button>
 			</div>
 			{showDescription && (
 				<div className='fixed inset-0 z-50 flex items-center justify-center bg-black/30'>
-					<div className='w-[400px] rounded-xl bg-[#f0dede] p-4 shadow-xl'>
+					<div className=' w-[250px] md:w-[350px] lg:w-[600px] rounded-xl bg-[#f0dede] p-4 shadow-xl'>
 						<div className='flex items-center justify-between'>
 							<button
 								onClick={closeDescription}
