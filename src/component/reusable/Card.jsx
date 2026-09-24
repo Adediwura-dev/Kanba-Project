@@ -42,7 +42,7 @@ export default function Card({
 			<div
 				ref={setNodeRef}
 				style={{
-					...style,
+					...style, //transform and transition
 					color: color,
 				}}
 				{...attributes}
