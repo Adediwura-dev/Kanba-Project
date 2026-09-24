@@ -7,11 +7,10 @@ import Todo from "../component/ui/Todo";
 
 export default function KanbaBoard() {
 	return (
-		<div className='parent-container grid grid-cols-4 gap-4 mx-6 my-8 text-gray-700'>
+		<div className='parent-container grid grid-cols-4 gap-4 mx-6 my-4 text-gray-700 px-10'>
 			<All />
 			<Todo />
 			<InProgress />
-
 			<Completed />
 		</div>
 	);

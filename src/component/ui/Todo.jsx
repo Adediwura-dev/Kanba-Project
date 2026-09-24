@@ -1,6 +1,14 @@
-import { CircleDashed } from "lucide-react";
+import { CircleDashed, CircleX } from "lucide-react";
 import Card from "../reusable/Card";
+import { useState } from "react";
 export default function Todo() {
+	const [selectedDescription, setSelectedDescription] = useState(null);
+	function displayDescription(description) {
+		setSelectedDescription(description);
+	}
+	function closeDescription(description) {
+		setSelectedDescription(null);
+	}
 	return (
 		<div className='flex flex-col gap-4 justify-start  py-3 px-4 rounded-3xl bg-[#9DC183]'>
 			<div>
@@ -12,8 +20,24 @@ export default function Todo() {
 					title='this is my card'
 					description='this is my card description'
 					backgroundColor='bg-[#bae3a8]'
+					displayDescription={displayDescription}
 				/>
 				<Card title='this is my card' backgroundColor='bg-[#bae3a8]' />
+				{selectedDescription && (
+					<div className='fixed inset-0 z-50 flex items-center justify-center bg-black/30'>
+						<div className='w-[400px] rounded-xl bg-[#f0dede] p-4 shadow-xl'>
+							<div className='flex items-center justify-between'>
+								<button
+									onClick={closeDescription}
+									className='cursor-pointer text-xl ml-auto'
+								>
+									<CircleX className='w-4 h-4 text-red-700' />
+								</button>
+							</div>
+							<p className='mt-4'> {selectedDescription} </p>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);
