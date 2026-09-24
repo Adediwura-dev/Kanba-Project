@@ -8,7 +8,7 @@ export default function Completed() {
     id: "completed",
   });
 
-  const completedCards = ["completed-1", "completed-2"]
+  const completedCards = ["completed-1", "completed-2"];
 
   return (
     <div

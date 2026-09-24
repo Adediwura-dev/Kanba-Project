@@ -19,20 +19,20 @@ export default function Todo() {
           <h3 className="uppercase font-bold m-0">To-do</h3>
         </div>
 
-		<SortableContext items={todoCards}>
-        <Card
-          id="todo-1"
-          title="this is my card"
-          description="this is my card description"
-          backgroundColor="bg-[#bae3a8]"
-        />
-        <Card
-          id="todo-2"
-          title="this is my card"
-          description="this is my card description"
-          backgroundColor="bg-[#bae3a8]"
-        />
-		</SortableContext>
+        <SortableContext items={todoCards}>
+          <Card
+            id="todo-1"
+            title="this is my card"
+            description="this is my card description"
+            backgroundColor="bg-[#bae3a8]"
+          />
+          <Card
+            id="todo-2"
+            title="this is my card"
+            description="this is my card description"
+            backgroundColor="bg-[#bae3a8]"
+          />
+        </SortableContext>
       </div>
     </div>
   );
