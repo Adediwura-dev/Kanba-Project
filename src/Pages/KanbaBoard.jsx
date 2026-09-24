@@ -33,11 +33,13 @@ export default function KanbaBoard() {
 
 	return (
 		<DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
-			<div className='parent-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-4 mx-6 my-8 text-gray-700'>
-				<All cards={cards} />
-				<Todo cards={cards} />
-				<InProgress cards={cards} />
-				<Completed cards={cards} />
+			<div className='-[calc(100vh-200px)]'>
+				<div className='parent-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-4 mx-6 my-8 text-gray-700'>
+					<All cards={cards} />
+					<Todo cards={cards} />
+					<InProgress cards={cards} />
+					<Completed cards={cards} />
+				</div>
 			</div>
 		</DndContext>
 	);
