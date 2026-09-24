@@ -8,7 +8,7 @@ export default function All({ cards, deleteCard }) {
   return (
     <div
       ref={setNodeRef}
-      className="flex flex-col gap-4 justify-start py-3 px-4 rounded-3xl bg-[#B3DFFA]"
+      className="flex flex-col max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar gap-4 justify-start py-3 px-4 rounded-3xl bg-[#B3DFFA]"
     >
       <div>
         <div className="flex gap-1.5 bg-[#64adda] w-fit  py-1 px-2 text-sm rounded-2xl items-center">

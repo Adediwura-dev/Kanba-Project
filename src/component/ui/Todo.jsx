@@ -24,7 +24,7 @@ export default function Todo({ cards, deleteCard }) {
   return (
     <div
       ref={setNodeRef}
-      className="flex flex-col gap-4 justify-start  py-3 px-4 rounded-3xl bg-[#9DC183]"
+      className="flex flex-col max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar gap-4 justify-start py-3 px-4 rounded-3xl bg-[#9DC183]"
     >
       <div>
         <div className="flex gap-1.5 w-fit bg-[#77b14e] py-1 px-2 text-sm rounded-2xl items-center">
