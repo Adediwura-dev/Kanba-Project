@@ -5,7 +5,6 @@ import Header from "./Statics/Header";
 import KanbaBoard from "./Pages/KanbaBoard";
 import About from "./Pages/About";
 
-
 function App() {
 	return (
 		<BrowserRouter>

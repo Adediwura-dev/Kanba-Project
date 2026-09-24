@@ -1,39 +1,38 @@
-import { CircleDashed } from "lucide-react";
+import { CircleDashed, CircleX } from "lucide-react";
 import Card from "../reusable/Card";
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
-
 export default function Todo() {
-  const { setNodeRef } = useDroppable({ id: "todo" });
+	const { setNodeRef } = useDroppable({ id: "todo" });
 
-  const todoCards = ["todo-1", "todo-2"];
+	const todoCards = ["todo-1", "todo-2"];
 
-  return (
-    <div
-      ref={setNodeRef}
-      className="flex flex-col gap-4 justify-start  py-3 px-4 rounded-3xl bg-[#9DC183]"
-    >
-      <div>
-        <div className="flex gap-2 w-fit bg-[#77b14e] py-1 px-2 text-sm rounded-2xl items-center">
-          <CircleDashed className="w-4 h-4" />
-          <h3 className="uppercase font-bold m-0">To-do</h3>
-        </div>
+	return (
+		<div
+			ref={setNodeRef}
+			className='flex flex-col gap-4 justify-start  py-3 px-4 rounded-3xl bg-[#9DC183]'
+		>
+			<div>
+				<div className='flex gap-1.5 w-fit bg-[#77b14e] py-1 px-2 text-sm rounded-2xl items-center'>
+					<CircleDashed className='w-4 h-4' />
+					<h3 className='uppercase font-bold m-0'>To-do</h3>
+				</div>
 
-        <SortableContext items={todoCards}>
-          <Card
-            id="todo-1"
-            title="this is my card"
-            description="this is my card description"
-            backgroundColor="bg-[#bae3a8]"
-          />
-          <Card
-            id="todo-2"
-            title="this is my card"
-            description="this is my card description"
-            backgroundColor="bg-[#bae3a8]"
-          />
-        </SortableContext>
-      </div>
-    </div>
-  );
+				<SortableContext items={todoCards}>
+					<Card
+						id='todo-1'
+						title='this is my card'
+						description='this is my card description'
+						backgroundColor='bg-[#bae3a8]'
+					/>
+					<Card
+						id='todo-2'
+						title='this is my card'
+						description='this is my card description'
+						backgroundColor='bg-[#bae3a8]'
+					/>
+				</SortableContext>
+			</div>
+		</div>
+	);
 }
