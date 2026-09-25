@@ -1,13 +1,13 @@
 import { CircleDashedCheck } from "lucide-react";
 import Card from "../reusable/Card";
-import { useDroppable } from "@dnd-kit/core";
-import { SortableContext } from "@dnd-kit/sortable";
+// import { useDroppable } from "@dnd-kit/core";
+// import { SortableContext } from "@dnd-kit/sortable";
 export default function All({ cards, deleteCard }) {
-  const { setNodeRef } = useDroppable({ id: "all" });
+  // const { setNodeRef } = useDroppable({ id: "all" });
   const allCards = cards.filter((card) => !card.deleted);
   return (
     <div
-      ref={setNodeRef}
+      // ref={setNodeRef}
       className="flex flex-col max-h-[calc(100vh-200px)] overflow-y-auto custom-scrollbar gap-4 justify-start py-3 px-4 rounded-3xl bg-[#B3DFFA]"
     >
       <div>
@@ -15,7 +15,7 @@ export default function All({ cards, deleteCard }) {
           <CircleDashedCheck className="w-4 h-4" />
           <h3 className="uppercase font-bold m-0">All</h3>
         </div>
-        <SortableContext items={allCards}>
+        {/* <SortableContext items={allCards}> */}
           {allCards.map((card) => (
             <Card
               key={card.id}
@@ -25,9 +25,10 @@ export default function All({ cards, deleteCard }) {
               dateCreated={card.dateCreated}
               backgroundColor="bg-[#CDEBFC]"
               deleteCard={deleteCard}
+              draggable={false}
             />
           ))}
-        </SortableContext>
+        {/* </SortableContext> */}
       </div>
     </div>
   );

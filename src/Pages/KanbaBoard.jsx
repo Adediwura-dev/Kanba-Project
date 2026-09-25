@@ -35,17 +35,43 @@ export default function KanbaBoard() {
       console.error("Error moving card to bin:", error);
     }
   }
-
-  function handleDragEnd(event) {
+  async function handleDragEnd(event) {
     const { active, over } = event;
 
     if (!over) {
       return;
     }
-    console.log("Dragged card:", active.id);
-    console.log("Dropped over:", over.id);
-  }
 
+    const cardId = active.id;
+
+    let newCategory = over.data.current?.category;
+
+    if (!newCategory) {
+      const droppedOnCard = cards.find((card) => card.id === over.id);
+
+      if (droppedOnCard) {
+        newCategory = droppedOnCard.category;
+      }
+    }
+
+    const validCategories = ["todo", "inprogress", "completed"];
+
+    if (!validCategories.includes(newCategory)) {
+      return;
+    }
+
+    try {
+      const cardRef = doc(db, "cards", cardId);
+
+      await updateDoc(cardRef, {
+        category: newCategory,
+      });
+
+      console.log(`Card ${cardId} moved to ${newCategory}`);
+    } catch (error) {
+      console.error("Error updating card category:", error);
+    }
+  }
   return (
     <DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
       <div className="parent-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-4 mx-6 my-8 text-gray-700">
