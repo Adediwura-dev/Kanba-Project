@@ -17,25 +17,29 @@ const Header = () => {
         />
 
         <div
-          className={`fixed top-0 left-0 w-[70%] max-w-[300px] h-screen flex flex-col items-start  gap-4 font-semibold text-lg  z-40 transition-all duration-300 ease-in-out ${
-            openMenu
-              ? "translate-x-0 opacity-100"
-              : "-translate-x-full opacity-0"
-          }`}
+          className={`fixed top-0 left-0 w-[80%] max-w-[300px] h-screen flex flex-col items-start  gap-4 font-semibold text-lg  z-[60] transition-all duration-300 ease-in-out ${openMenu
+            ? "translate-x-0 opacity-100"
+            : "-translate-x-full opacity-0"
+            }`}
           style={{
-            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            backgroundColor: "rgba(255, 255, 255, 0.95)",
             boxShadow: "4px 0 10px rgba(0,0,0,0.3)",
           }}
         >
           <div className="p-4 flex flex-col gap-3 justify-center items-start">
-            <nav>Home</nav>
-            <nav>About Us</nav>
-            <nav>Tasks Board</nav>
+
+            <Link to="/" onClick={() => setOpenMenu(false)}> <nav>Home</nav></Link>
+            <Link to="/about" onClick={() => setOpenMenu(false)}> <nav>About Us</nav> </Link>
+            <Link to="/" onClick={() => setOpenMenu(false)}><nav>Tasks Board</nav> </Link>
             <button onClick={() => setOpenBin(true)} className="cursor-pointer">
               <Trash />
             </button>{" "}
-            <button>Sign Up</button>
-            <button>Log in</button>
+            <Link to="/signup" onClick={() => setOpenMenu(false)}> Sign Up </Link>
+            <Link to="/login" onClick={() => setOpenMenu(false)}>Log in</Link>
+            <h2> Category:</h2>
+            <Link to="/" onClick={() => setOpenMenu(false)}><nav>To do</nav></Link>
+            <Link to="/" onClick={() => setOpenMenu(false)}><nav>In Progress</nav></Link>
+            <Link to="/" onClick={() => setOpenMenu(false)}><nav>Completed</nav></Link>
           </div>
         </div>
         <div className="">
@@ -71,12 +75,12 @@ const Header = () => {
         </button>
         {/* <Trash className=" hover:bg-[#800000]  py-2 h-10 " /> */}
         <div className="flex gap-5 cursor-pointer max-md:hidden">
-          <button className="bg-white text-black hover:bg-[#800000] hover:text-white font-bold py-2 px-4 rounded">
-            Sign Up
-          </button>
-          <button className="bg-white text-black hover:bg-[#800000] hover:text-white font-bold py-2 px-4 rounded">
-            Log in
-          </button>
+          <Link to="/signup" onClick={() => setOpenMenu(false)} className="bg-[#800000] text-white px-5 py-2 rounded-lg">
+            Sign-Up
+          </Link>
+          <Link to="/login" onClick={() => setOpenMenu(false)} className="bg-[#800000] text-white px-5 py-2 rounded-lg">
+            Log-in
+          </Link>
         </div>
       </div>
       {openBin && <Bin closeBin={() => setOpenBin(false)} />}
