@@ -7,6 +7,7 @@ import About from "./Pages/About";
 import AddTask from "./component/ui/AddTask";
 import Footer from "./Statics/Footer";
 
+
 import Signup from "./Pages/Aunthentication/SignUp";
 import Login from "./Pages/Aunthentication/Login";
 import Home from "./Pages/Home";
