@@ -1,27 +1,32 @@
-import logo from"../assets/logo.png";
+import logo from "../assets/logo.png";
+import facebookLogo from "../assets/facebookLogo.png";
+import instagramLogo from "../assets/instagramLogo.png";
+import xLogo from "../assets/xLogo.png";
+
+
 function Footer() {
   return (
     <footer className="bg-gray-100 mt-10 px-8 py-10">
       <div className="max-w-6xl mx-auto">
 
-        {/* Footer top */}
+        
         <div className="flex flex-wrap justify-between gap-8">
 
-          {/* Logo / Description */}
+          
           <div>
             <div className="">
-                      <img
-                        src={logo}
-                        className="max-w-[30px]min-h-[20px]max-lg: max-w-[120px]min-h-[40px]"
-                      />
-                    </div>
+              <img
+                src={logo}
+                className="w-[90px] "
+              />
+            </div>
 
             <p className="text-gray-600 mt-2 max-w-xs">
               Manage your tasks, stay organized, and get things done with PadiPal.
             </p>
           </div>
 
-          {/* Quick Links */}
+          
           <div>
             <h3 className="font-semibold text-gray-800 mb-3">
               Quick Links
@@ -42,30 +47,45 @@ function Footer() {
             </div>
           </div>
 
-          {/* Social Media */}
+          
           <div>
             <h3 className="font-semibold text-gray-800 mb-3">
-              Follow Us
+              Follow Us On:
             </h3>
 
-            <div className="flex gap-4">
+            <div className="flex gap-7">
               <a href="#" className="text-gray-600 hover:text-gray-900">
-                Facebook
+
+                <img
+                  src={facebookLogo}
+                  className="w-7 h-auto mb-8 max-w-[30px]min-h-[20px]max-lg:
+                   max-w-[120px]min-h-[40px]"
+                />
               </a>
 
               <a href="#" className="text-gray-600 hover:text-gray-900">
-                Instagram
+
+                <img
+                  src={instagramLogo}
+                  className="w-7 h-auto mb-8 max-w-[30px]min-h-[20px]max-lg:
+                   max-w-[120px]min-h-[40px]"
+                />
               </a>
 
               <a href="#" className="text-gray-600 hover:text-gray-900">
-                X
+
+                <img
+                  src={xLogo}
+                  className="w-8 h-auto mb-8 max-w-[30px]min-h-[20px]max-lg:
+                   max-w-[120px]min-h-[40px]"
+                />
               </a>
             </div>
           </div>
 
         </div>
 
-        {/* Bottom */}
+        
         <div className="border-t border-gray-300 mt-8 pt-5 text-center">
           <p className="text-gray-500 text-sm">
             © 2026 PadiPal. All rights reserved.
