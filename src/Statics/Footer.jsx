@@ -4,10 +4,10 @@ function Footer() {
     <footer className="bg-gray-100 mt-10 px-8 py-10">
       <div className="max-w-6xl mx-auto">
 
-        {/* Footer top */}
+        
         <div className="flex flex-wrap justify-between gap-8">
 
-          {/* Logo / Description */}
+          
           <div>
             <div className="">
                       <img
@@ -21,7 +21,7 @@ function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
+          
           <div>
             <h3 className="font-semibold text-gray-800 mb-3">
               Quick Links
@@ -42,7 +42,7 @@ function Footer() {
             </div>
           </div>
 
-          {/* Social Media */}
+          
           <div>
             <h3 className="font-semibold text-gray-800 mb-3">
               Follow Us
@@ -65,7 +65,7 @@ function Footer() {
 
         </div>
 
-        {/* Bottom */}
+        
         <div className="border-t border-gray-300 mt-8 pt-5 text-center">
           <p className="text-gray-500 text-sm">
             © 2026 PadiPal. All rights reserved.
