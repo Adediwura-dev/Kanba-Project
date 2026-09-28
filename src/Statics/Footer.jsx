@@ -1,7 +1,7 @@
-import logo from"../assets/logo.png";
-import facebookLogo from"../assets/facebookLogo.png";
-import instagramLogo from"../assets/instagramLogo.png";
-import xLogo from"../assets/xLogo.png";
+import logo from "../assets/logo.png";
+import facebookLogo from "../assets/facebookLogo.png";
+import instagramLogo from "../assets/instagramLogo.png";
+import xLogo from "../assets/xLogo.png";
 
 
 function Footer() {
@@ -15,11 +15,11 @@ function Footer() {
           {/* Logo / Description */}
           <div>
             <div className="">
-                      <img
-                        src={logo}
-                        className="max-w-[30px]min-h-[20px]max-lg: max-w-[120px]min-h-[40px]"
-                      />
-                    </div>
+              <img
+                src={logo}
+                className="w-[90px] "
+              />
+            </div>
 
             <p className="text-gray-600 mt-2 max-w-xs">
               Manage your tasks, stay organized, and get things done with PadiPal.
@@ -55,7 +55,7 @@ function Footer() {
 
             <div className="flex gap-7">
               <a href="#" className="text-gray-600 hover:text-gray-900">
-      
+
                 <img
                   src={facebookLogo}
                   className="w-7 h-auto mb-8 max-w-[30px]min-h-[20px]max-lg:
@@ -64,7 +64,7 @@ function Footer() {
               </a>
 
               <a href="#" className="text-gray-600 hover:text-gray-900">
-                
+
                 <img
                   src={instagramLogo}
                   className="w-7 h-auto mb-8 max-w-[30px]min-h-[20px]max-lg:
