@@ -1,6 +1,7 @@
 import { DndContext, closestCorners } from "@dnd-kit/core";
 import { useEffect, useState } from "react";
 import { collection, onSnapshot, doc, updateDoc } from "firebase/firestore";
+import { useSearchParams } from "react-router-dom";
 import { db } from "../firebase";
 import All from "../component/ui/All";
 import Completed from "../component/ui/Completed";
@@ -10,6 +11,10 @@ import AddTask from "../component/ui/AddTask";
 
 export default function KanbaBoard() {
 	const [cards, setCards] = useState([]);
+	const [selectedCategory, setSelectedCategory] = useState("all");
+	const [searchParams] = useSearchParams();
+
+	const selectCategory = searchParams.get("category") || "all";
 	useEffect(() => {
 		const unsubscribe = onSnapshot(collection(db, "cards"), (snapshot) => {
 			const cardsData = snapshot.docs.map((doc) => ({
@@ -78,13 +83,46 @@ export default function KanbaBoard() {
 			<AddTask />
 			<DndContext collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
 				<div className='parent-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-4 mx-6 my-8 text-gray-700'>
-					<All cards={cards} deleteCard={handleDeleteCards} />
+					{/* <All cards={cards} deleteCard={handleDeleteCards} />
 					<div className='hidden md:block'>
 						<Todo cards={cards} deleteCard={handleDeleteCards} />
 					</div>
 					<div className='hidden md:block'>
 						<InProgress cards={cards} deleteCard={handleDeleteCards} />
 					</div>
+					<div className='hidden md:block'>
+						<Completed cards={cards} deleteCard={handleDeleteCards} />
+					</div> */}
+					<div className='md:hidden'>
+						{selectCategory === "all" && (
+							<All cards={cards} deleteCard={handleDeleteCards} />
+						)}
+
+						{selectCategory === "todo" && (
+							<Todo cards={cards} deleteCard={handleDeleteCards} />
+						)}
+
+						{selectCategory === "inprogress" && (
+							<InProgress cards={cards} deleteCard={handleDeleteCards} />
+						)}
+
+						{selectCategory === "completed" && (
+							<Completed cards={cards} deleteCard={handleDeleteCards} />
+						)}
+					</div>
+
+					<div className='hidden md:block'>
+						<All cards={cards} deleteCard={handleDeleteCards} />
+					</div>
+
+					<div className='hidden md:block'>
+						<Todo cards={cards} deleteCard={handleDeleteCards} />
+					</div>
+
+					<div className='hidden md:block'>
+						<InProgress cards={cards} deleteCard={handleDeleteCards} />
+					</div>
+
 					<div className='hidden md:block'>
 						<Completed cards={cards} deleteCard={handleDeleteCards} />
 					</div>
