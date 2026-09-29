@@ -95,9 +95,9 @@ const Header = () => {
 						<div className='w-full mt-2 border-t pt-3 flex flex-col gap-3 justify-center items-start'>
 							<button
 								onClick={() => setOpenBin(true)}
-								className='cursor-pointer'
+								className='cursor-pointer hidden'
 							>
-								<Trash />
+								<Trash className="hidden" />
 							</button>
 
 							<Link to='/signup' onClick={() => setOpenMenu(false)}>
@@ -142,20 +142,20 @@ const Header = () => {
 
 			<div className='flex justify-between gap-6 cursor-pointer'>
 				<button onClick={() => setOpenBin(true)} className='cursor-pointer'>
-					<Trash className='hover:bg-[#800000] hover:text-white py-2 h-10 w-10 rounded-2xl' />
+					<Trash className='hidden hover:bg-[#800000] hover:text-white py-2 h-10 w-10 rounded-2xl' />
 				</button>
 				<div className='flex gap-5 cursor-pointer max-md:hidden'>
 					<Link
 						to='/signup'
 						className='hover:bg-[#800000] hover:text-white text-black px-5 py-2 rounded-lg'
 					>
-						Sign-Up
+						Sign up
 					</Link>
 					<Link
 						to='/login'
 						className='hover:bg-[#800000] hover:text-white text-black px-5 py-2 rounded-lg'
 					>
-						Log-in
+						Log in
 					</Link>
 				</div>
 			</div>

@@ -4,7 +4,7 @@ const AboutHero = () => {
   return (
     <div>
     
-      <section className="grid min-h-screen items-center gap-10 text-gray-800 sm:px-8 md:grid-cols-2 md:gap-12 md:px-10">
+      <section className="grid min-h-screen items-center gap-10 text-black sm:px-8 md:grid-cols-2 md:gap-12 md:px-10">
         <div className="max-w-[1200px] py-5 px-6 pl-10 md:pl-16">
           <h1 className=" fon font-bold sm:text-lg md-text-xl lg:text-2xl ">
             ABOUT PADIPAL
