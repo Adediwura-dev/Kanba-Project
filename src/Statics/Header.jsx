@@ -3,12 +3,22 @@ import { useState } from "react";
 import logo from "../assets/logo.png";
 import { Trash, Menu, ChevronDown } from "lucide-react";
 import Bin from "../component/ui/Bin";
+import { useAuth } from "../AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 const Header = () => {
 	const [openMenu, setOpenMenu] = useState(false);
 	const [openBin, setOpenBin] = useState(false);
 	const [openCategory, setOpenCategory] = useState(false);
 	const navigate = useNavigate();
+	const { user } = useAuth();
+
+	const handleLogout = async () => {
+		await signOut(auth);
+		setOpenMenu(false);
+		navigate("/");
+	};
 
 	const categories = [
 		{ label: "To do", value: "todo" },
@@ -47,9 +57,6 @@ const Header = () => {
 						<Link to='/about' onClick={() => setOpenMenu(false)}>
 							<nav>About Us</nav>
 						</Link>
-						{/* <Link to="/tasks" onClick={() => setOpenMenu(false)}>
-							<nav>Tasks Board</nav>
-						</Link> */}
 						<div className='w-full '>
 							<button
 								onClick={() => setOpenCategory(!openCategory)}
@@ -100,12 +107,18 @@ const Header = () => {
 								<Trash className="hidden" />
 							</button>
 
-							<Link to='/signup' onClick={() => setOpenMenu(false)}>
-								Sign Up
-							</Link>
-							<Link to='/login' onClick={() => setOpenMenu(false)}>
-								Log in
-							</Link>
+							{user ? (
+								<button onClick={handleLogout}>Log out</button>
+							) : (
+								<>
+									<Link to='/signup' onClick={() => setOpenMenu(false)}>
+										Sign Up
+									</Link>
+									<Link to='/login' onClick={() => setOpenMenu(false)}>
+										Log in
+									</Link>
+								</>
+							)}
 						</div>
 					</div>
 				</div>
@@ -145,18 +158,29 @@ const Header = () => {
 					<Trash className='hidden hover:bg-[#800000] hover:text-white py-2 h-10 w-10 rounded-2xl' />
 				</button>
 				<div className='flex gap-5 cursor-pointer max-md:hidden'>
-					<Link
-						to='/signup'
-						className='hover:bg-[#800000] hover:text-white text-black px-5 py-2 rounded-lg'
-					>
-						Sign up
-					</Link>
-					<Link
-						to='/login'
-						className='hover:bg-[#800000] hover:text-white text-black px-5 py-2 rounded-lg'
-					>
-						Log in
-					</Link>
+					{user ? (
+						<button
+							onClick={handleLogout}
+							className='hover:bg-[#800000] hover:text-white text-black px-5 py-2 rounded-lg'
+						>
+							Log out
+						</button>
+					) : (
+						<>
+							<Link
+								to='/signup'
+								className='hover:bg-[#800000] hover:text-white text-black px-5 py-2 rounded-lg'
+							>
+								Sign up
+							</Link>
+							<Link
+								to='/login'
+								className='hover:bg-[#800000] hover:text-white text-black px-5 py-2 rounded-lg'
+							>
+								Log in
+							</Link>
+						</>
+					)}
 				</div>
 			</div>
 			{openBin && <Bin closeBin={() => setOpenBin(false)} />}

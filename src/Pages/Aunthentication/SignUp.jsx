@@ -1,16 +1,22 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { createUserWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../../firebase"
 
 export default function Signup() {
     const [form, setForm] = useState({ name: "", email: "", password: "" })
+    const [error, setError] = useState("")
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        // save for now - you can connect to backend later
-        localStorage.setItem("padipal_user", JSON.stringify(form))
-        alert("Account created!")
-        navigate("/login")
+        setError("")
+        try {
+            await createUserWithEmailAndPassword(auth, form.email, form.password)
+            navigate("/")
+        } catch (err) {
+            setError(err.message)
+        }
     }
 
     return (
@@ -24,6 +30,7 @@ export default function Signup() {
                 <input className="w-full mb-6 p-3 border rounded-lg" type="password" placeholder="Password" required
                     onChange={e => setForm({ ...form, password: e.target.value })} />
                 <button className="w-full bg-[#800000] text-white py-3 rounded-lg font-semibold hover:bg-green-700">Sign Up</button>
+                {error && <p className="text-red-500 text-sm mt-3">{error}</p>}
                 <p className="mt-4 text-sm text-center">Already have an account? <Link to="/login" className="text-[#800000] font-bold">Log in</Link></p>
             </form>
         </div>

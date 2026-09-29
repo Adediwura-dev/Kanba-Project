@@ -1,18 +1,21 @@
 import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../../firebase"
 
 export default function Login() {
     const [form, setForm] = useState({ email: "", password: "" })
+    const [error, setError] = useState("")
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        const saved = JSON.parse(localStorage.getItem("padipal_user"))
-        if (saved && saved.email === form.email && saved.password === form.password) {
-            localStorage.setItem("isLoggedIn", "true")
-            navigate("/tasks")
-        } else {
-            alert("Invalid email or password")
+        setError("")
+        try {
+            await signInWithEmailAndPassword(auth, form.email, form.password)
+            navigate("/")
+        } catch (err) {
+            setError("Invalid email or password")
         }
     }
 
@@ -25,6 +28,7 @@ export default function Login() {
                 <input className="w-full mb-6 p-3 border rounded-lg" type="password" placeholder="Password" required
                     onChange={e => setForm({ ...form, password: e.target.value })} />
                 <button className="w-full bg-[#800000] text-white py-3 rounded-lg font-semibold hover:bg-green-700">Log In</button>
+                {error && <p className="text-red-500 text-sm mt-3">{error}</p>}
                 <p className="mt-4 text-sm text-center">No account? <Link to="/signup" className="text-[#800000] font-bold">Sign Up</Link></p>
             </form>
         </div>

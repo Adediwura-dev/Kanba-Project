@@ -1,9 +1,13 @@
 import logo from "../assets/logo.png";
 // import Signup from "./Aunthentication/SignUp";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
 export default function Home() {
   const navigate = useNavigate();
+  const { user, loading } = useAuth();
+if (loading) return null;
+if (user) return <Navigate to="/tasks" replace />;
   return (
     <div className="min-h-screen overflow-hidden bg-[#F8FAFD] text-[#081C4D]">
       <main>
