@@ -1,9 +1,13 @@
 import logo from "../assets/logo.png";
-import Signup from "./Aunthentication/SignUp";
-import { useNavigate } from "react-router-dom";
+// import Signup from "./Aunthentication/SignUp";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
 export default function Home() {
   const navigate = useNavigate();
+  const { user, loading } = useAuth();
+if (loading) return null;
+if (user) return <Navigate to="/tasks" replace />;
   return (
     <div className="min-h-screen overflow-hidden bg-[#F8FAFD] text-[#081C4D]">
       <main>
@@ -318,7 +322,7 @@ export default function Home() {
             </p>
 
             <button
-              onClick={() => navigate("/Signup")}
+              onClick={() => navigate("/signup")}
               className="mt-8 rounded-full bg-white px-8 py-4 font-bold text-[#081C4D] transition duration-300 hover:-translate-y-1 hover:bg-[#F0F4FA]"
             >
               Get Started →
