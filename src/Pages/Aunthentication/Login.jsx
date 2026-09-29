@@ -10,7 +10,7 @@ export default function Login() {
         const saved = JSON.parse(localStorage.getItem("padipal_user"))
         if (saved && saved.email === form.email && saved.password === form.password) {
             localStorage.setItem("isLoggedIn", "true")
-            navigate("/")
+            navigate("/tasks")
         } else {
             alert("Invalid email or password")
         }

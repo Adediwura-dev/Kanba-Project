@@ -1,5 +1,5 @@
 import logo from "../assets/logo.png";
-import Signup from "./Aunthentication/SignUp";
+// import Signup from "./Aunthentication/SignUp";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -318,7 +318,7 @@ export default function Home() {
             </p>
 
             <button
-              onClick={() => navigate("/Signup")}
+              onClick={() => navigate("/signup")}
               className="mt-8 rounded-full bg-white px-8 py-4 font-bold text-[#081C4D] transition duration-300 hover:-translate-y-1 hover:bg-[#F0F4FA]"
             >
               Get Started →
